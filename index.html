@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practice typing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Fira+Code&family=Inter&family=JetBrains+Mono:wght@400;700&family=Lora&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main id="app">
+      <header class="bar">
+        <span id="timer" class="timer">60</span>
+        <span id="last" class="last"></span>
+      </header>
+
+      <section id="test" class="view">
+        <div class="words-window"><div id="words" class="words"></div></div>
+        <p class="hint">start typing · one mistake ends the test · esc restart · tab weak words</p>
+      </section>
+
+      <section id="drill" class="view" hidden>
+        <p id="drill-reason" class="reason"></p>
+        <div id="drill-word" class="drill-word"></div>
+        <div id="drill-reps" class="reps"></div>
+        <p class="hint">type it correctly 2 times · esc to skip</p>
+      </section>
+
+      <section id="passed" class="view" hidden>
+        <div class="big"><span id="passed-wpm"></span><small>wpm</small></div>
+        <p id="passed-detail" class="detail"></p>
+        <p class="hint">space for the next test</p>
+      </section>
+
+      <footer class="settings">
+        <label>font <select id="font"></select></label>
+      </footer>
+
+      <aside id="weak" class="weak" hidden>
+        <h2>words you miss</h2>
+        <ol id="weak-list"></ol>
+        <button id="weak-reset" type="button">reset</button>
+      </aside>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
