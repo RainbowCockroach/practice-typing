@@ -20,6 +20,14 @@ describe('generateWords', () => {
     expect(words.every((w) => common.includes(w))).toBe(true);
   });
 
+  it('picks more common words more often', () => {
+    const words = generateWords(common, {}, 20_000, seeded(5));
+    const top = words.filter((w) => common.indexOf(w) < 10).length;
+    const bottom = words.filter((w) => common.indexOf(w) >= 90).length;
+    expect(top).toBeGreaterThan(bottom * 2); // expected ~6x
+    expect(bottom).toBeGreaterThan(0);
+  });
+
   it('never repeats a word back to back', () => {
     const words = generateWords(['a', 'b'], { a: entry(50) }, 500, seeded(2));
     expect(words.some((w, i) => w === words[i - 1])).toBe(false);

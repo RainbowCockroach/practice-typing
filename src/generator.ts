@@ -5,6 +5,9 @@ import type { WeakEntry } from './weakWords';
 export const TEST_WORDS = 400; // more than anyone types in a minute
 export const MAX_WEAK_SHARE = 0.3;
 const WEAK_SHARE_PER_WORD = 0.03;
+// `common` is ordered most common first. Squaring the random number leans picks toward
+// the top: about a third come from the first 300 of ~2800 words, yet every word still shows up.
+const RANK_BIAS = 2;
 
 export type Rng = () => number;
 
@@ -30,7 +33,7 @@ export function generateWords(
     }
     return weakList[weakList.length - 1][0];
   };
-  const pickCommon = (): string => common[Math.floor(rng() * common.length)];
+  const pickCommon = (): string => common[Math.floor(rng() ** RANK_BIAS * common.length)];
 
   const words: string[] = [];
   while (words.length < count) {

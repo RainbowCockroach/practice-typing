@@ -1,5 +1,5 @@
 import './theme.css';
-import common from './words/en1k.json';
+import common from './words/ngsl.json';
 import { onEscape, onKey, onTick, ready, type State } from './engine';
 import { FONTS, applyFont, loadFont } from './fonts';
 import { generateWords } from './generator';
